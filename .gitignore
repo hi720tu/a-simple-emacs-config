@@ -2,7 +2,8 @@
 *
 
 # But read directories in the case of future changes
-!*/
+# !*/
+# Nevermind. It's staging duplicate files from elpa folder.
 
 # Only stage
 !init.el
