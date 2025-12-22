@@ -1,0 +1,210 @@
+#+TITLE: Hitu's GNU Emacs Configuration
+#+DATE: December 21st, 2025. (Sunday)
+#+AUTHOR: G. Hitendra Varma
+#+DESCRIPTION: Documentation of Emacs configuration and packages.
+#+STARTUP: showeverything
+#+OPTIONS: toc:2
+
+* Table of Contents :toc:
+- [[#package-manager][Package Manager]]
+  - [[#packageel-stepup][package.el Stepup]]
+- [[#emacs-customizations][Emacs Customizations]]
+  - [[#autosave--backup-files-relocation][Autosave & Backup Files Relocation]]
+  - [[#default-coding-system][Default Coding System]]
+  - [[#fonts][Fonts]]
+  - [[#display-settings][Display Settings]]
+- [[#packages][Packages]]
+  - [[#magit][Magit]]
+  - [[#which-key][which-key]]
+  - [[#toc-org][toc-org]]
+  - [[#org-bullets][org-bullets]]
+  - [[#org-indent-mode][org-indent-mode]]
+
+* Package Manager
+
+Since I'm very new to Emacs, I decided to use the build-in package manager.
+Moreover, it would be best to actually know my reasons to use **Elpaca** or **straight.el**, rather than just jumping straight in.
+
+** package.el Stepup
+
+#+begin_src emacs-lisp
+
+  (require 'package)
+
+  (setq package-archives
+        '(("gnu" . "https://elpa.gnu.org/packages/")
+  	("melpa" . "https://melpa.org/packages/")))
+
+  (package-initialize)
+
+  (unless package-archive-contents
+    (package-refresh-contents))
+
+#+end_src
+
+* Emacs Customizations
+
+** Autosave & Backup Files Relocation
+
+I hate how Emacs creates these autosave (filename~) and backup (#filename#) files inside the working directory.
+I understand it made sense some 20 years back to save backups right beside the actual file, but I can't edit .gitignore for every project.
+So, I will be saving right inside the .emacs.d directory
+
+#+begin_src emacs-lisp
+
+  ;; Save all backup files in one place
+  (setq backup-directory-alist
+        '(("." . "~/.emacs.d/backups")))
+
+  ;; Save all auto-save files in one place
+  (setq auto-save-file-name-transforms
+        '((".*" "~/.emacs.d/auto-saves/" t)))
+
+  ;; Bug fixes
+  (setq backup-by-copying t)     ;; don't clobber symlinks
+  (setq delete-old-versions t)   ;; clean up excess backups
+  (setq kept-new-versions 6)     ;; keep 6 most recent backups
+  (setq kept-old-versions 2)     ;; keep two very old backups
+  (setq version-control t)       ;; use numbered backups
+
+#+end_src
+
+** Default Coding System
+
+It's 2025 bro, what are you doing?!
+
+#+begin_src emacs-lisp
+
+  (set-language-environment "UTF-8")
+  (setq default-buffer-file-coding-system 'utf-8-unix)
+  (prefer-coding-system 'utf-8-unix)
+
+#+end_src
+
+
+** Fonts
+
+I will be using the Martian Mono font. I absoulutely love it :))
+
+#+begin_src emacs-lisp
+
+  ;; Default font
+  (set-face-attribute 'default nil
+  		    :font "Martian Mono Nerd Font"
+  		    :height 120
+  		    :weight 'regular)
+
+  ;; Font to be used during non-monospace contexts
+  (set-face-attribute 'variable-pitch nil
+  		    :font "Ubuntu"
+  		    :height 120
+  		    :weight 'medium)
+
+  ;; Make sure new frames get it too
+  (add-to-list 'default-frame-alist
+  	     '(font . "Martian Mono Nerd Font-12"))
+
+  ;; For Telugu script writing
+  (set-fontset-font t 'telugu "Noto Sans Telugu")
+
+  ;; Line Spacing
+  (setq-default line-spacing 0.12)
+
+#+end_src
+
+** Display Settings
+
+#+begin_src emacs-lisp
+
+  ;; Uncomment when you join the Church of Emacs
+  ;;(menu-bar-mode -1)
+  ;;(tool-bar-mode -1)
+  (scroll-bar-mode -1)
+
+  ;; Display number line (I can't live without them eventhough I don't use vim-motions/evil-mode)
+  (global-display-line-numbers-mode 1)
+
+#+end_src
+
+* Packages
+
+** Magit
+
+#+begin_src emacs-lisp
+
+  (unless (package-installed-p 'magit)
+    (package-install 'magit))
+
+  ;; Magit configuration
+  (global-set-key (kbd "C-x g") #'magit-status)
+
+  (setq magit-display-buffer-function
+        #'magit-display-buffer-same-window-except-diff-v1)
+
+#+end_src
+
+** which-key
+
+#+begin_src emacs-lisp
+
+  (unless (package-installed-p 'which-key)
+    (pakage-install 'which-key))
+
+  (with-eval-after-load 'which-key
+    (setq which-key-side-window-location 'bottom
+  	which-key-sort-order #'which-key-key-order-alpha
+  	which-key-sort-uppercase-first nil
+  	which-key-add-column-padding 1
+  	which-key-max-display-columns nil
+  	which-key-min-display-lines 6
+  	whick-key-side-window-slot -10
+  	which-key-side-window-max-height 0.25
+  	which-key-idle-delay 0.8
+  	which-key-max-description-length 25
+  	which-key-allow-imprecise-window-fit t
+  	which-key-seperator "~~❥"))
+
+  (which-key-mode 1)
+
+#+end_src
+
+** toc-org
+
+#+begin_src emacs-lisp
+
+  (unless (package-installed-p 'toc-org)
+    (package-install 'toc-org))
+
+  ;; Just in case I want the world to burn
+  (with-eval-after-load 'toc-org
+    (setq toc-org-max-depth 3))
+
+  (add-hook 'org-mode-hook #'toc-org-mode)
+
+#+end_src
+
+** org-bullets
+
+#+begin_src emacs-lisp
+
+  (unless (package-installed-p 'org-bullets)
+    (package-install 'org-bullets))
+
+  (with-eval-after-load 'org-bullets
+    (setq org-bullets-bullet-list '("✬" "ꕥ" "▶" "╰┈➤")))
+
+  (add-hook 'org-mode-hook #'org-bullets-mode)
+
+#+end_src
+
+** org-indent-mode
+
+Not exactly a package, this comes built-in with Emacs. A MUST HAVE!!
+
+#+begin_src emacs-lisp
+
+  (setq org-indent-indentation-per-level 2)
+
+  (add-hook 'org-mode-hook #'org-indent-mode)
+
+#+end_src

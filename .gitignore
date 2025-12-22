@@ -1,0 +1,10 @@
+# Ignore everything by default
+*
+
+# But read directories in the case of future changes
+!*/
+
+# Only stage
+!init.el
+!config.org
+!.gitignore
