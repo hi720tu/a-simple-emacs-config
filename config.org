@@ -7,7 +7,7 @@
 
 * Table of Contents :toc:
 - [[#package-manager][Package Manager]]
-  - [[#packageel-stepup][package.el Stepup]]
+  - [[#packageel-setup][package.el Setup]]
 - [[#emacs-customizations][Emacs Customizations]]
   - [[#autosave--backup-files-relocation][Autosave & Backup Files Relocation]]
   - [[#default-coding-system][Default Coding System]]
@@ -25,7 +25,7 @@
 Since I'm very new to Emacs, I decided to use the build-in package manager.
 Moreover, it would be best to actually know my reasons to use **Elpaca** or **straight.el**, rather than just jumping straight in.
 
-** package.el Stepup
+** package.el Setup
 
 #+begin_src emacs-lisp
 
