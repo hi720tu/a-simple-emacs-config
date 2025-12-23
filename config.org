@@ -19,6 +19,8 @@
   - [[#toc-org][toc-org]]
   - [[#org-bullets][org-bullets]]
   - [[#org-indent-mode][org-indent-mode]]
+- [[#theming][Theming]]
+  - [[#org-mode][org-mode]]
 
 * Package Manager
 
@@ -206,5 +208,24 @@ Not exactly a package, this comes built-in with Emacs. A MUST HAVE!!
   (setq org-indent-indentation-per-level 2)
 
   (add-hook 'org-mode-hook #'org-indent-mode)
+
+#+end_src
+
+* Theming
+
+Is that even a real word?! Oh wait! All words are made-up ;)
+
+** org-mode
+
+#+begin_src emacs-lisp
+
+  (setq org-src-fontify-natively t)
+
+  (custom-set-faces
+   '(org-block ((t (:background "#f0f0f0" :extend t))))
+   '(org-block-begin-line
+     ((t (:background "#f0f0f0" :foreground "#999999" :extend t))))
+   '(org-block-end-line
+     ((t (:background "#f0f0f0" :foreground "#999999" :extend t)))))
 
 #+end_src
