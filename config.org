@@ -19,6 +19,7 @@
   - [[#toc-org][toc-org]]
   - [[#org-bullets][org-bullets]]
   - [[#org-indent-mode][org-indent-mode]]
+  - [[#emmet][Emmet]]
 - [[#theming][Theming]]
   - [[#org-mode][org-mode]]
 
@@ -208,6 +209,24 @@ Not exactly a package, this comes built-in with Emacs. A MUST HAVE!!
   (setq org-indent-indentation-per-level 2)
 
   (add-hook 'org-mode-hook #'org-indent-mode)
+
+#+end_src
+
+** Emmet
+
+I'm using the default keybinding, which is *C-j*
+
+#+begin_src emacs-lisp
+
+  (unless (package-installed-p 'emmet-mode)
+    (package-refresh-contents)
+    (package-install 'emmet-mode))
+
+  (require 'emmet-mode)
+
+  (add-hook 'html-mode-hook #' emmet-mode)
+  (add-hook 'css-mode-hook  #' emmet-mode)
+  (add-hook 'web-mode-hook  #' emmet-mode)
 
 #+end_src
 

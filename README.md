@@ -1,5 +1,9 @@
 # a-simple-emacs-config
 
+# Requirements
+
+- Martin Mono Nerd Font
+
 My first Emacs configuration, so it's very basic and simple. But that's its strength.
 
 - I used the built-in package manager (**package.el**)
