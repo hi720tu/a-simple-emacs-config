@@ -1,20 +1,23 @@
 # a-simple-emacs-config
 
-My first Emacs configuration, so it's very basic and simple. But that's its strength.
-
-- I used the built-in package manager (**package.el**)
-- **org-bullets** are customized to my personal taste, so feel free change them :)
-- If you're confident using Emacs keybindings, feel free to un-comment menu-bar and tool-bar commands at Display Settings in the config.org file.
-
-...and that's it. You're basically getting vanilla Emacs.
+My personal basic configuration of GNU Emacs. 
 
 # Requirements
 
 - Martin Mono Nerd Font
 
+## Stuff to know if you decide to use my config
+
+- I used the built-in package manager (**package.el)
+- **org-bullets** are customized to my personal taste, so feel free to change them :)
+- Un-comment menu-bar and tool-bar lines under Display Settings in the config.org file, if you're confident using Emacs keybindings.
+
+## Installed Packages
+
+Magit, which-key, toc-org, org-bullets, Emmet.
+
 ## Future Additions
 
-- Customize according to web dev workflow.
-  - emmet, web-mode, company, rainbow.
+I'm learning web development, so I might add: Flycheck, outline-indent, indent-bars, undo-tree.
 
-- Org-Roam
+org-roam, ace-window.
