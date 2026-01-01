@@ -251,6 +251,9 @@ I'm using the default keybinding, which is *C-j*
 
 ** whitespace-mode
 
+Some work needs to be done to pick the perfect bg-color, so until then, I decided to comment out this
+feature.
+
 #+begin_src emacs-lisp
 
   ;; (global-whitespace-mode 1)
