@@ -20,6 +20,9 @@
   - [[#org-bullets][org-bullets]]
   - [[#org-indent-mode][org-indent-mode]]
   - [[#emmet][Emmet]]
+  - [[#prettify-symbols-mode][prettify-symbols-mode]]
+  - [[#delete-selection-mode][delete-selection-mode]]
+  - [[#whitespace-mode][whitespace-mode]]
 - [[#theming][Theming]]
   - [[#org-mode][org-mode]]
 
@@ -229,6 +232,39 @@ I'm using the default keybinding, which is *C-j*
   (add-hook 'web-mode-hook  #' emmet-mode)
 
 #+end_src
+
+** prettify-symbols-mode
+
+#+begin_src emacs-lisp
+
+  (global-prettify-symbols-mode 1)
+
+#+end_src
+
+** delete-selection-mode
+
+#+begin_src emacs-lisp
+
+  (delete-selection-mode 1)
+
+#+end_src
+
+** whitespace-mode
+
+#+begin_src emacs-lisp
+
+  ;; (global-whitespace-mode 1)
+
+  ;; (setq whitespace-style
+  ;;      '(face trailing tabs tab-mark))
+
+  ;; (set-face-attribute 'whitespace-tab nil
+  ;; 		    :background nil
+  ;; 		    :foreground "#888888")
+
+#+end_src
+
+
 
 * Theming
 
