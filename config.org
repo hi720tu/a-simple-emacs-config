@@ -18,8 +18,9 @@
   - [[#which-key][which-key]]
   - [[#toc-org][toc-org]]
   - [[#org-bullets][org-bullets]]
-  - [[#org-indent-mode][org-indent-mode]]
   - [[#emmet][Emmet]]
+- [[#built-in-packages][Built-In Packages]]
+  - [[#org-indent-mode][org-indent-mode]]
   - [[#prettify-symbols-mode][prettify-symbols-mode]]
   - [[#delete-selection-mode][delete-selection-mode]]
   - [[#whitespace-mode][whitespace-mode]]
@@ -203,17 +204,6 @@ I will be using the Martian Mono font. I absoulutely love it :))
 
 #+end_src
 
-** org-indent-mode
-
-Not exactly a package, this comes built-in with Emacs. A MUST HAVE!!
-
-#+begin_src emacs-lisp
-
-  (setq org-indent-indentation-per-level 2)
-
-  (add-hook 'org-mode-hook #'org-indent-mode)
-
-#+end_src
 
 ** Emmet
 
@@ -230,6 +220,18 @@ I'm using the default keybinding, which is *C-j*
   (add-hook 'html-mode-hook #' emmet-mode)
   (add-hook 'css-mode-hook  #' emmet-mode)
   (add-hook 'web-mode-hook  #' emmet-mode)
+
+#+end_src
+
+* Built-In Packages
+
+** org-indent-mode
+
+#+begin_src emacs-lisp
+
+  (setq org-indent-indentation-per-level 2)
+
+  (add-hook 'org-mode-hook #'org-indent-mode)
 
 #+end_src
 
@@ -266,8 +268,6 @@ feature.
   ;; 		    :foreground "#888888")
 
 #+end_src
-
-
 
 * Theming
 
