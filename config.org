@@ -2,12 +2,12 @@
 #+DATE: December 21st, 2025. (Sunday)
 #+AUTHOR: G. Hitendra Varma
 #+DESCRIPTION: Documentation of Emacs configuration and packages.
-#+STARTUP: showeverything
+#+STARTUP: overview
 #+OPTIONS: toc:2
 
-* Table of Contents :toc:
-- [[#package-manager][Package Manager]]
-  - [[#packageel-setup][package.el Setup]]
+**Table of Contents**
+:toc:
+- [[#packageel-setup][package.el Setup]]
 - [[#emacs-customizations][Emacs Customizations]]
   - [[#autosave--backup-files-relocation][Autosave & Backup Files Relocation]]
   - [[#default-coding-system][Default Coding System]]
