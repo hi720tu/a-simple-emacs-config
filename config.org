@@ -13,6 +13,7 @@
   - [[#default-coding-system][Default Coding System]]
   - [[#fonts][Fonts]]
   - [[#display-settings][Display Settings]]
+  - [[#org-mode-workflow][org-mode Workflow]]
 - [[#packages][Packages]]
   - [[#magit][Magit]]
   - [[#which-key][which-key]]
@@ -130,6 +131,17 @@ I will be using the Martian Mono font. I absoulutely love it :))
 
   ;; Display number line (I can't live without them eventhough I don't use vim-motions/evil-mode)
   (global-display-line-numbers-mode 1)
+
+#+end_src
+
+** org-mode Workflow
+
+Inspired by the Kanban style project management.
+
+#+begin_src emacs-lisp
+
+  (setq org-todo-keywords
+        '(("TODO" "IDEA" "RESEARCH" "WORK-IN-PROGRESS" "|" "DONE" "DROPPED")))
 
 #+end_src
 
