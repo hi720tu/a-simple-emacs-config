@@ -1,7 +1,7 @@
 #+Title: Hitu's GNU Emacs Configuration
 #+DATE: December 21st, 2025. (Sunday)
 #+AUTHOR: G. Hitendra Varma
-#+DESCRIPTION: Documentation of Emacs configuration and packages.
+#+DESCRIPTION: Documentation of my Emacs configuration and packages.
 #+STARTUP: overview
 #+OPTIONS: toc:2
 
@@ -12,7 +12,6 @@
   - [[#autosave--backup-files-relocation][Autosave & Backup Files Relocation]]
   - [[#default-coding-system][Default Coding System]]
   - [[#fonts][Fonts]]
-  - [[#display-settings][Display Settings]]
   - [[#org-mode-workflow][org-mode Workflow]]
 - [[#packages][Packages]]
   - [[#magit][Magit]]
@@ -25,14 +24,15 @@
   - [[#prettify-symbols-mode][prettify-symbols-mode]]
   - [[#delete-selection-mode][delete-selection-mode]]
   - [[#whitespace-mode][whitespace-mode]]
+    - [[#work-in-progress-find-proper-colors-that-work-well-with-the-theme][WORK-IN-PROGRESS Find proper colors that work well with the theme.]]
 - [[#theming][Theming]]
   - [[#org-mode][org-mode]]
   - [[#splash-screen][Splash screen]]
 
 * Package Manager
 
-Since I'm very new to Emacs, I decided to use the build-in package manager.
-Moreover, it would be best to actually know my reasons to use **Elpaca** or **straight.el**, rather than just jumping straight in.
+Just using the build-in Emacs package manager (package.el)
+Might update to elpaca, straight.el, or use-package in the future.
 
 ** package.el Setup
 
@@ -55,9 +55,9 @@ Moreover, it would be best to actually know my reasons to use **Elpaca** or **st
 
 ** Autosave & Backup Files Relocation
 
-I hate how Emacs creates these autosave (filename~) and backup (#filename#) files inside the working directory.
-I understand it made sense some 20 years back to save backups right beside the actual file, but I can't edit .gitignore for every project.
-So, I will be saving right inside the .emacs.d directory
+Moving the annoying backup and autosave files that Emacs creates right beside the source file
+to Emacs' configuration directory.
+(Change the path to your preferred location)
 
 #+begin_src emacs-lisp
 
@@ -80,20 +80,19 @@ So, I will be saving right inside the .emacs.d directory
 
 ** Default Coding System
 
-It's 2025 bro, what are you doing?!
+I wanted UTF-8 to be my default enconding, since I regularly use foreign language scripts.
+(Emacs should already default to unicode, but feel free to remove this if you only use English)
 
 #+begin_src emacs-lisp
 
   (set-language-environment "UTF-8")
-  (setq default-buffer-file-coding-system 'utf-8-unix)
   (prefer-coding-system 'utf-8-unix)
 
 #+end_src
 
-
 ** Fonts
 
-I will be using the Martian Mono font. I absoulutely love it :))
+(Add your preferred fonts, but I do highly recommend "Martin Mono")
 
 #+begin_src emacs-lisp
 
@@ -118,20 +117,6 @@ I will be using the Martian Mono font. I absoulutely love it :))
 
   ;; Line Spacing
   (setq-default line-spacing 0.12)
-
-#+end_src
-
-** Display Settings
-
-#+begin_src emacs-lisp
-
-  ;; Uncomment when you join the Church of Emacs
-  ;;(menu-bar-mode -1)
-  ;;(tool-bar-mode -1)
-  (scroll-bar-mode -1)
-
-  ;; Display number line (I can't live without them eventhough I don't use vim-motions/evil-mode)
-  (global-display-line-numbers-mode 1)
 
 #+end_src
 
@@ -195,7 +180,6 @@ Inspired by the Kanban style project management.
   (unless (package-installed-p 'toc-org)
     (package-install 'toc-org))
 
-  ;; Just in case I want the world to burn
   (with-eval-after-load 'toc-org
     (setq toc-org-max-depth 3))
 
@@ -220,7 +204,7 @@ Inspired by the Kanban style project management.
 
 ** Emmet
 
-I'm going to be using the default keybinding, which is *C-j*
+*C-j* is the default keybind, which is what I'm using here.
 
 #+begin_src emacs-lisp
 
@@ -266,8 +250,7 @@ I'm going to be using the default keybinding, which is *C-j*
 
 ** whitespace-mode
 
-Some work needs to be done to pick the perfect bg-color, so until then, I decided to comment out this
-feature.
+*** WORK-IN-PROGRESS Find proper colors that work well with the theme.
 
 #+begin_src emacs-lisp
 
@@ -284,12 +267,18 @@ feature.
 
 * Theming
 
-Is that even a real word?! Oh wait! All words are made-up ;)
-
 #+begin_src emacs-lisp
 
+  (menu-bar-mode -1)
+  (tool-bar-mode -1)
+  (scroll-bar-mode -1)
+
+  (setq display-line-numbers-type 'relative)
+  (global-display-line-numbers-mode 1)
+
+  ;; Colorscheme inspired by Solarized
   (custom-set-faces
-   '(default ((t (:background "#fdf6e3" :foreground "#2e3440")))))
+       '(default ((t (:background "#fdf6e3" :foreground "#2e3440")))))
 
 #+end_src
 
@@ -314,5 +303,4 @@ Is that even a real word?! Oh wait! All words are made-up ;)
 
   ;; (setq inhibit-startup-screen t)
   
-
 #+end_src
