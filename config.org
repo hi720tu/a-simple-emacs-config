@@ -273,6 +273,33 @@ Inspired by the Kanban style project management.
   (tool-bar-mode -1)
   (scroll-bar-mode -1)
 
+  ;; Padding
+  ;;(setq-default
+  ;; left-margin-width 2
+  ;; right-margin-width 2)
+
+  ;;(setq-default header-line-format
+  ;;	      '(:eval (propertize " " 'display '(height 1.7))))
+
+  ;;(defun my/apply-window-margins ()
+  ;;  (set-window-margins (selected-window)
+  ;;		      left-margin-width
+  ;;		      right-margin-width))
+
+  ;;(add-hook 'window-configuration-change-hood #'my/apply-window-margins)
+
+  ;;(add-to-list 'default-frame-alist '(internal-border-width . 0))
+  ;;(set-frame-parameter nil 'internal-border-width 0)
+
+  ;; Disabling margins for Magit
+  ;;(add-hook 'magit-mode-hook
+  ;;	  (lambda () (set-window-margins (selected-window) 0 0)))
+
+  ;; Overriding the default horizontal split
+  (setq split-height-threshold nil)
+  (setq split-width-threshold 0)
+
+  ;; Line Numbers
   (setq display-line-numbers-type 'relative)
   (global-display-line-numbers-mode 1)
 
