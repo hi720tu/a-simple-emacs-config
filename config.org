@@ -1,4 +1,4 @@
-#+TITLE: Hitu's GNU Emacs Configuration
+#+Title: Hitu's GNU Emacs Configuration
 #+DATE: December 21st, 2025. (Sunday)
 #+AUTHOR: G. Hitendra Varma
 #+DESCRIPTION: Documentation of Emacs configuration and packages.
@@ -27,6 +27,7 @@
   - [[#whitespace-mode][whitespace-mode]]
 - [[#theming][Theming]]
   - [[#org-mode][org-mode]]
+  - [[#splash-screen][Splash screen]]
 
 * Package Manager
 
@@ -219,7 +220,7 @@ Inspired by the Kanban style project management.
 
 ** Emmet
 
-I'm using the default keybinding, which is *C-j*
+I'm going to be using the default keybinding, which is *C-j*
 
 #+begin_src emacs-lisp
 
@@ -285,6 +286,13 @@ feature.
 
 Is that even a real word?! Oh wait! All words are made-up ;)
 
+#+begin_src emacs-lisp
+
+  (custom-set-faces
+   '(default ((t (:background "#fdf6e3" :foreground "#2e3440")))))
+
+#+end_src
+
 ** org-mode
 
 #+begin_src emacs-lisp
@@ -292,10 +300,19 @@ Is that even a real word?! Oh wait! All words are made-up ;)
   (setq org-src-fontify-natively t)
 
   (custom-set-faces
-   '(org-block ((t (:background "#f0f0f0" :extend t))))
+   '(org-block ((t (:background "#e4e7ec" :extend t))))
    '(org-block-begin-line
-     ((t (:background "#f0f0f0" :foreground "#999999" :extend t))))
+     ((t (:background "#5e81ac" :foreground "#eceff4" :extend t))))
    '(org-block-end-line
-     ((t (:background "#f0f0f0" :foreground "#999999" :extend t)))))
+     ((t (:background "#5e81ac" :foreground "#eceff4" :extend t)))))
+
+#+end_src
+
+** Splash screen
+
+#+begin_src emacs-lisp
+
+  ;; (setq inhibit-startup-screen t)
+  
 
 #+end_src
